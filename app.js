@@ -21,12 +21,25 @@
 
 // **********************************
 
-const fs = require('fs');
+// const fs = require('fs');
+//
+// const files = fs.readdirSync('./');
+// console.log(files);
+//
+// fs.readdir('$', './', function(err, files) {
+//   if (err) console.log('Error', err);
+//   else console.log('Result', files);
+// });
 
-const files = fs.readdirSync('./');
-console.log(files);
+// **********************************
 
-fs.readdir('$', './', function(err, files) {
-  if (err) console.log('Error', err);
-  else console.log('Result', files);
-});
+const EventEmitter = require('events'); // CLASS
+const emitter = new EventEmitter(); // OBJECT
+
+//Register a listener
+emitter.on('messageLogged', function(){
+  console.log('Listener called');
+})
+
+// Raise an Event
+emitter.emit('messageLogged');
