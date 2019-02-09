@@ -33,22 +33,12 @@
 
 // **********************************
 
-const EventEmitter = require('events'); // CLASS
-const emitter = new EventEmitter(); // OBJECT
+const Logger = require('./logger');
+const logger = new Logger();
 
-//Register a listener
-emitter.on('messageLogged', (arg) => {
-   console.log('Listener called', arg);
+// Register a listener
+logger.on('messageLogged', (arg) => {
+  console.log('Listener called', arg);
 })
 
-// Raise an Event
-emitter.emit('messageLogged', { id: 1, url: 'http://' });
-
-
-// Raise: logging (data: message)
-
-emitter.on('logging', (arg) => {
-   console.log('Listener called', arg);
-})
-
-emitter.emit('logging', {data: 'message'});
+logger.log('message');
